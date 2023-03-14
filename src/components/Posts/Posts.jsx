@@ -12,7 +12,7 @@ const Posts = () => {
     const { user } = useSelector((state) => state.authReducer.authData)
     let { posts, loading } = useSelector((state) => state.postReducer)
     const params = useParams();
-    console.log(posts);
+    
 
     useEffect(() => {
         dispatch(getTimeLinePosts(user._id));
@@ -26,7 +26,7 @@ const Posts = () => {
             {
                 loading ? "Fetching Post..." :
                     posts.map((post, id) => {
-                        return <Post data={post} id={id} />
+                        return <Post data={post} id={id} key={id}/>
                     })
             }
         </div>
